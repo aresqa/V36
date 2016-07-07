@@ -361,8 +361,6 @@ td-k          d-k.apt laden
  #34 ++ p{C t79 "Sonder-SW : " #250 t111} m{C}
 #t{#0}
 #t22
- #31. ++ e"_" p{ t20 "Themen:  " t21 } m{ t23 }
- #t22
  #33s { t20 "FremdSchlagw.:  " t21 } P22
 #+T
 
@@ -406,7 +404,7 @@ td-k          d-k.apt laden
 #)W
 
   UP f. Exemplare
-#(X
+#(x
   #+-    falls nicht gewuenscht
 #nr drA dvF =nr e0
 #nra =nr e0
@@ -449,13 +447,120 @@ td-k          d-k.apt laden
 #00 p{ ' <a href="javascript:vorm(' 39 } P{ 39 ')">Vormerken</a>' t23 }
 #J5
 
-#)X
+#)x
 
-#(Y
+#(Y   Ausgabe Exemplar-/Bestellsaetze
+
+#nr "0" e1 dnr anr          #unr initialisieren
+   Expl.Satz
+     Schluessel des 1. Ex.satzes nach #ux: (3 Moeglichkeiten)
+#00 +! e"[\31=-]" P":" |102
+#00 +! e"[\31=-]" P"'" |102
+#00 +! e"[\31=-]" P":E" |102   ExplSatz?
+#00 +! e"[\31=-]" p"t " P" " |102   bestellsatz?
+
+#)Y                         nichts gefunden
+   Es gibt Bestellungen oder Exemplare
+#-!
+#t{ '<pre> ' }         Festpunktschrift an
+
+#t{ t4 t4 t79 "Exemplare/Bestellungen" t111 C }
+#t98
+#nr "abcdefghijklmnopqrstuvwxyz0123456789ABCDE" =fm   // fuer flipmarks
+#-Y
+#ux: +#98z c"abgschl" e0
+#t4                         neue Zeile
+
+  Zeile aus Reg. 10 auswerten: Expl.Angaben (statt Expl.Satz!)
+  Numerierung der Exemplare - steht hinter :E
+#uaX daX daY e0
+#ux: b":E" e3 f"0" =aX    Expl.Nr.
+#ux: b" = " F" vpl" e" W2" e"; V2" p". " AaX   Sign. d. Expl.
+#ux: b"'" e"'" p"/" AaX
+ #ux: +#uao b" W" "Warteregal!" e"!"
+ #ux: +#uao b" V" "Es gibt Titelvormerkungen!" e"!"
+#uaX 0 =aY
+#uaY +#98b e0
+#+k
+
+#98b
+
+#t{ t72 "javascript:reqLink('" }
+
+#nra P{ "')" t104 }
+
+   Anzeige des Exemplars
+ #t72    Flipmark
+#uaX daY
+ #ufm e1 p'{\fs4 ' P{ '}' t104 }
+#uaX P"~" e32 s34 b"[~]"
+ #ufm b1 =fm
+#dt +#98c e0
+
+
+#-k    wenn es kein Expl.Satz ist, dann Bestellsatz, es muss ein Bestelldatum geben:
+#uzp +# c"alc" e0    nicht bei alcarta
+  Best.Datum
+#ux: ddb b"   " f" " b" " e" " =db
+  Best.Nr
+#ux: ddn b"   " f" " e" " =dn
+#udn +#udn e0
+#+#
+  Best.Nr als Flip anzeigen
+#udn p{ " Best.Nr./Dat.: " t72 } y1 P104
+#udn ddn =Y~
+#udb p" "
+  Suchbef. f. Best.Nr
+#9DA +#98Z e$ y0 p"x f |: o " P"?\if l2 dis\if l2 sho rec\if g1 sho lis" =Z~
+#t{ "   " }
+#98Z
+
+#9DB i4,A "  [ABO]!" e"!" p79 P122
+
+#nr p"X" e1 =tp
+#9DG $n Atp
+#9DB $u Atp
+#utp f"X" b0 e23 s25             Kommentar
+
+#98c e0
+
+#ux: +#98z i4,t c"inv" "  inventar.!" e"!"
+#ux: +— B" = " T" " c"ver" "  Verlust!" e"!"
+#ux: +#98z B" = " T" " c"bes" "  bestellt!" e"!"
+#ux: +#98z B" = " T" " c"rek" "  reklamiert!" e"!"
+#ux: +— B" = " T" " c"p" p"  Pr„senz!" e"!" y1
+#ux: c" W2" "  Warteregal!" e"!"
+#-—
+#9DH $R b6 e2 f"0" " -- verliehen bis "
+#9DH $R b4 e2 f"0" p"."
+#9DH $R e4 p"."
+#9DG i4,V p"  Vorgemerkt!" e"!"
+  es war ein Bestellsatz (kein ExplSatz) Weiter bei #98z
+#ux: +#98z i4,t e0
+
+#uao e0
+  noch Explare?
+#</
+         ggf. naechsten Schluessel holen, Schleife
+#ux: +Y E"[':]" |103
+
+  keine ExplSaetze (mehr), Bestellsaetze?
+#00 +Y e"[\31=-]" p"t " P" " |102     ja, es gibt einen
+#t{ "</pre>" C }
+#)Y
+#98z
+#</
+#t4
+#00 +k e"[\31=-]" p"t " P" " |103     Bestellsatz, dasselbe
+#)Y
+
+
+
+#(M
 #9GG p{ "Geb&uuml;hrensatz" } e0 
 #3n i4,s I5,p I4,s { "Schlagwort-Stammsatz" } e0
 #t4
 #t{ ' [<a href="javascript:reqJob(' "'cfga');" '">Details</a>]' } 
-#)Y
+#)M
    >>>>>>>>> Ende der Unterprogramme >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

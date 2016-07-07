@@ -317,12 +317,10 @@ to
 #31p >s e0
 #36 >s e0
 #31t >s e0
-#35 ++ p{C t79 "Werk-SW : " #250 t111} m{C} P>X Z
- #34 ++ p{C t79 "Sonder-SW : " #250 t111} m{C}
+#35 ++ p{t4 t79 "Werk-SW : " #250 t111} m{C} P>X Z
+ #34 ++ p{t4 t79 "Sonder-SW : " #250 t111} m{C}
 #t{#0}
 #t22
- #31. ++ e"_" p{ t20 "Themen:  " t21 } m{ t23 }
- #t22
 #33. ++ p>s m>s e0
 #t22
 #t4
@@ -394,7 +392,6 @@ to
 #cc +#8eZ i5,: e0
 #t{ "\par \pard \fi1800 " }
 #cc e$ ,"_\_/_" p'x var "' P'"\ins #ucc\exec winstart.flx' =Z~
- #cc e$ p"~start " =Z~
 #cc B$u B"\31?" f" " =Y~
 #cc B$u B"\31?" f" " p72 P104
 #ucc dcc e0
@@ -540,8 +537,143 @@ to
 #)w
 
 
-  UP f. Exemplare
-#(X
+#(Y   Ausgabe Exemplar-/Bestellsaetze
+
+#nr "0" e1 dnr anr          #unr initialisieren
+   Expl.Satz
+     Schluessel des 1. Ex.satzes nach #ux: (3 Moeglichkeiten)
+#00 +! e"[\31=-]" P":" |102
+#00 +! e"[\31=-]" P"'" |102
+#00 +! e"[\31=-]" P":E" |102   ExplSatz?
+#00 +! e"[\31=-]" p"t " P" " |102   bestellsatz?
+
+#)Y                         nichts gefunden
+   Es gibt Bestellungen oder Exemplare
+#-!
+#t{ '{\f1 ' }         Festpunktschrift an
+#u}D y0 x"*1.15" x"r0" e"." p{ '\fs' } P" "    benutzerdefinierte Groesse +15%
+
+#t{ t4 t4 t79 "Exemplare/Bestellungen" t111 C }
+#t98
+#nr "abcdefghijklmnopqrstuvwxyz0123456789ABCDE" =fm   // fuer flipmarks
+#-Y
+#ux: +#98z c"abgschl" e0
+#t4                         neue Zeile
+
+  Zeile aus Reg. 10 auswerten: Expl.Angaben (statt Expl.Satz!)
+  Numerierung der Exemplare - steht hinter :E
+#uaX daX daY e0
+#ux: b":E" e3 f"0" =aX    Expl.Nr.
+#ux: b" = " F" vpl" e" W2" e"; V2" p". " AaX   Sign. d. Expl.
+#ux: b"'" e"'" p"/" AaX
+ #ux: +#uao b" W" "Warteregal!" e"!"
+ #ux: +#uao b" V" "Es gibt Titelvormerkungen!" e"!"
+#uaX 0 =aY
+#uaY +#98b e0
+#+k
+
+#98b
+#ufm e1 AaY
+#uaY 0 =Y~
+#nra p"x find #" P"\disp\sho rec" =Z~
+
+   Anzeige des Exemplars
+#t72    Flipmark
+#uaX daY
+#ufm e1 p'{\fs4 ' P{ '}' t104 }
+#uaX P"~" e32 s34 b"[~]"
+#ufm b1 =fm
+#dt +#98c e0
+
+
+#-k    wenn es kein Expl.Satz ist, dann Bestellsatz, es muss ein Bestelldatum geben:
+#uzp +# c"alc" e0    nicht bei alcarta
+  Best.Datum
+#ux: ddb b"   " f" " b" " e" " =db
+  Best.Nr
+#ux: ddn b"   " f" " e" " =dn
+#udn +#udn e0
+#+#
+  Best.Nr als Flip anzeigen
+#udn p{ " Best.Nr./Dat.: " t72 } y1 P104
+#udn ddn =Y~
+#udb p" "
+
+  Suchbef. f. Best.Nr
+#9DA +#98Z e$ y0 p"x f |: o " P"?\if l2 dis\if l2 sho rec\if g1 sho lis" =Z~
+#t{ "   " }
+#98Z
+
+#9DB i4,A "  [ABO]!" e"!" p79 P122
+
+#nr p"X" e1 =tp
+#9DG $n Atp
+#9DB $u e25 p" (" P")" Atp
+#utp f"X" b0 s25             Kommentar
+
+#98c e0
+
+#ux: +#98z i4,t c"inv" "  inventar.!" e"!"
+#ux: +— B" = " T" " c"ver" "  Verlust!" e"!"
+#ux: +#98z B" = " T" " c"bes" "  bestellt!" e"!"
+#ux: +#98z B" = " T" " c"rek" "  reklamiert!" e"!"
+#ux: +— B" = " T" " c"p" y1 p"  Präsenz!" e"!"
+#ux: c" W2" "  Warteregal!" e"!"
+#-—
+#9DH $R b6 e2 f"0" " -- verliehen bis "
+#9DH $R b4 e2 f"0" p"."
+#9DH $R e4 p"."
+#9DG i4,V p"  Vorgemerkt!" e"!"
+  es war ein Bestellsatz (kein ExplSatz) Weiter bei #98z
+#ux: +#98z i4,t e0
+
+#uao e0
+  noch Exemplare?
+#</
+         ggf. naechsten Schluessel holen, Schleife
+#ux: +Y E"[':]" |103
+
+  keine ExplSaetze (mehr), Bestellsaetze?
+#00 +Y e"[\31=-]" p"t " P" " |102     ja, es gibt einen
+#)Y
+#98z
+#</
+#t4
+#00 +k e"[\31=-]" p"t " P" " |103     Bestellsatz, dasselbe
+#)Y
+
+#(X       Aufbereitung #35, #36   $$
+#t4
+#cc +#39Y e$ F32 b0                             % Angabe ohne Teilfeld
+#cc b$a e$ e" = " b", " e";"                  % 1. Verfasser
+#cc b$a e$ f32 e", " p" "                     % wie bei #(K
+#cc b$a b$a e$ e" = " b", " e";" p3         %; 2. Verfasser
+#cc b$a b$a e$ f32 e", " p" "
+#cc b$a b$a b$a e$ e" = " b", " e";" p3   %; 3. Verfasser
+#cc b$a b$a b$a e$ f32 e", " p" "
+#cc $t p": "                                      %: Titel
+#cc $v p9                                         %/ Vorlageform
+#cc $e p8                                         %. - Ausgabe
+#cc +#39Z $f p8                                   %. - Verlag : Ort
+                   % Unselbstaendig
+#cc $g p" In: "                                   %In: GT
+#cc $d 2                                          %, Band
+#cc $j p10 P11                                    %(Jahr)
+#cc $m                                            %Heft
+#cc $n p", S. "                                   %, S. Seiten
+#nr +#39Y Z
+#39Z               % Selbstaendig
+#cc $j p2                                         %, Jahr
+#cc $g p14                                        %. - (GT
+#cc $d 3                                          %; Zhlg.)
+#cc $g p11 Z                                      %)
+#39Y
+#cc $u p" / "                                     % Unterschlagwort
+#)X
+
+
+  UP f. Exemplare TEST Obsolet
+#(x
   #+-    falls nicht gewuenscht
 #nr drA dvF =nr e0
 #nra =nr e0
@@ -576,7 +708,7 @@ to
 #<
 #00 +: P":E" |103
 #00 +#J6 e" = " p"t " |:8
-#)X
+#)x
 #J6
 #00 p{ t4 "Es gibt" t72 "Bestellungen" t104 } e0
 #00 "Bestellungen!" e"!" =Y~
@@ -592,9 +724,9 @@ to
 #00 p"X a-ovorm " =Z~
 #J5
 #unr dnr e0
-#)X
+#)x
 
-#(Y
+#(M
 #9GG p{ "Gebührensatz" } e0 
 #3n i4,s I5,p I4,s { "Schlagwort-Stammsatz" } e0
 #t4
@@ -602,7 +734,7 @@ to
 #nr p"X cfga!" e"!" =Z~
 #nr p"DETAILS!" e"!" =Y~
 
-#)Y
+#)M
 
    >>>>>>>>> Ende der Unterprogramme >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 

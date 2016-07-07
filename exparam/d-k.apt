@@ -109,7 +109,7 @@
 #2n +#2nj e0
 
   andere Saetze: #-(   (in d-krtf.apr)
-#>Y
+#>M
 #t4
 #+(
   ******** Nachladeprozedur: uebergeordnete Saetze laden  *******
@@ -430,7 +430,9 @@
 
 #-u
 
+#b~z
 #>%
+#b~d
 
   wenn Zs, dann schauen ob Themenhefte
 #00 +#J1 i4,z e"+" P"+" |98 e0
@@ -465,7 +467,10 @@
 #90 ++ p>c m>c
 #usf dsf e0
 
-#>X    Exemplare, Bestellungen
+  (was folgt, nicht bei alcarta)
+#uzp +#uza c"alc" e0
+
+#>Y    Exemplare, Bestellungen
 
 #99n e0
 
@@ -931,7 +936,7 @@
 
 #-V   Viele Satztypen
 #t{ t79 t66 "Systemsatz" t98 t111 }
-#>Y  (details anzeigen)
+#>M  (details anzeigen)
 
 #t4
 #9A y0 e1 p{ t20 "Typ :" t21 t66 } P" = "
@@ -982,7 +987,7 @@
   GND
 
 #-o
-#>Y
+#>M
 #gn.100 ,"_^_c_ _" p{ t20 "Person: " t21 } P22
 #gn.110 p{ t20 "Koerp.: " t21 } P22
 #gn.111 p{ t20 "Tagung: " t21 } P22
@@ -1027,7 +1032,7 @@
 #+#
 
 #4nj e0    Stammsatz fuer Personennamen
-#>Y
+#>M
 #t{ t20 t66 "Personen-Stammsatz" t98 t21 } P22
 #4n { t20 "Name " t21 } P22
 #4nd { t20 "   Lebensdaten: " t21 } P22
@@ -1043,7 +1048,7 @@
 
   An #3n kann auch #6n haengen
 #6nj e0
-#>Y
+#>M
 #J1
 #t{ t20 t66 "Koerp.-Stammsatz" t98 t21 }
 #6n p66 P98
@@ -1110,12 +1115,12 @@
 
   Aufloesung einiger Codes anhand Hilfsindex ~z7
 #(%
-#b~z
+#ucc dcc e0
 #37 0 =cc
 #t22
 #t18
 #ucc +% p{ t20 "Sprache(n)" t21 } e0
-#nr +#0c. e0
+#nr +#J2 e0
   Code=Klartext im Reg.2 von .azx suchen (in cat.azx)
 #-%
   wenn z.B.  #37 ger, dann  ~z7Sger=  suchen
@@ -1128,9 +1133,12 @@
 #J1 
 #ucc b" " p", " e2
 #ucc +% b" " =cc
+#ucc dcc e0
+
 #t22
 #ux7 dx7 e0
 
+#J2
 #0c.1 { t20 "Inhaltstyp: " t21 } e0
 #0c.1 e" " p"C" P"=" |78
 #ux7 b"=" e" ["
@@ -1144,8 +1152,7 @@
 #ux7 b"=" e" ["
 #77.1 e0 P22
 
-
-#b~d
+#ux7 dx7 e0
 
 #)%
 
